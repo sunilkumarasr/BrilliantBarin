@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/drawer_layout">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:id="@+id/relativeTop"
+                android:layout_width="match_parent"
+                android:layout_height="55dp">
+
+                <LinearLayout
+                    android:id="@+id/li"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="15dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_weight="0.2"
+                        android:orientation="horizontal">
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgMenu"
+                            android:layout_width="25dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/menu_ic"/>
+                        <TextView
+                            android:id="@+id/txtTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textSize="17sp"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/leaguespartan_medium"
+                            android:text="@string/app_name"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|end"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgNotification"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/notifications_ic"
+                            android:layout_marginEnd="15dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.8dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="15sp"
+                    android:layout_marginEnd="15sp"
+                    android:background="#707070"/>
+
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/frame_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/bottom_card"
+                android:layout_below="@+id/relativeTop"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/bottom_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="2dp"
+                app:cardElevation="5dp">
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottomNavigationView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+                    app:menu="@menu/menu_bottom"
+                    app:itemActiveIndicatorStyle="@drawable/bottom_nav_item_background"
+                    app:itemIconTint="@color/bottom_bg"
+                    app:itemTextColor="@color/bottom_bg"
+                    app:itemBackground="@color/white"
+                    app:labelVisibilityMode="labeled"/>
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/side_menu"/>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</layout>

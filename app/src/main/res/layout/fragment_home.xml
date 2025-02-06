@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/leaguespartan_medium"
+                        android:textSize="19sp"
+                        android:text="Hey Sunil Kumar"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/txtdes"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/leaguespartan_regular"
+                        android:textSize="16sp"
+                        android:text="Find a course you want to learn"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="15sp"
+                        android:background="@drawable/round_edit_gray">
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
+                            android:src="@drawable/search_ic"/>
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:hint="Search Here"
+                            android:layout_marginStart="10dp"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:src="@drawable/banner"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:scaleType="fitXY"/>
+
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:visibility="gone"
+                    android:id="@+id/imageSlider"
+                    android:background="@drawable/banner_round"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_height="180dp"
+                    android:paddingTop="5dp"
+                    app:iss_auto_cycle="true"
+                    app:iss_corner_radius="18"
+                    app:iss_delay="2000"
+                    app:iss_indicator_align="BOTTOM"
+                    app:iss_period="2000"
+                    app:iss_text_color="@color/black"
+                    app:iss_title_background="@color/trance"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/leaguespartan_bold"
+                    android:text="All Classes"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="25dp"
+                    android:background="@color/white"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewjobAlert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+</layout>

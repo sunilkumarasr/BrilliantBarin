@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Activitys.ClassDetailsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include layout="@layout/top_layout" />
+
+        <RelativeLayout
+            android:id="@+id/relativeVideoPlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:src="@drawable/item_ic"
+                android:scaleType="fitXY"/>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_centerInParent="true"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/video_play"/>
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Best Social Science for Class 1 NCERT Solutions Study Material."
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/leaguespartan_semibold"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum fringilla lacus. Sed placerat imperdiet ex, eu laoreet ipsum pulvinar"
+                    android:textColor="@color/txtdes"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/leaguespartan_regular"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:text="This Class Includes"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/leaguespartan_semibold"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:backgroundTint="@color/gray"
+                        android:background="@drawable/round_button_red"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_vertical"
+                        android:text="Social"
+                        android:textColor="@color/txtdes"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:backgroundTint="@color/gray"
+                        android:background="@drawable/round_button_red"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_vertical"
+                        android:text="Science"
+                        android:textColor="@color/txtdes"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:text="Description"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/leaguespartan_semibold"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:text="Details"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/leaguespartan_semibold"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="In this class you will learn every thing about Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, felis eget lacinia lobortis, dui massa mattis diam, eu tempor tellus est a elit. Aenean sit amet eros vitae odio ornare facilisis vitae et ligula. Suspendisse nec accumsan velit."
+                    android:textColor="@color/txtdes"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/leaguespartan_regular"/>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:text="What you will learn"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/leaguespartan_semibold"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:backgroundTint="@color/gray"
+                        android:background="@drawable/round_button_red"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_vertical"
+                        android:text="In this class you will learn every thing about Lerem"
+                        android:textColor="@color/txtdes"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:backgroundTint="@color/gray"
+                        android:background="@drawable/round_button_red"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_vertical"
+                        android:text="In this class you will learn every thing about Lerem"
+                        android:textColor="@color/txtdes"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:backgroundTint="@color/gray"
+                        android:background="@drawable/round_button_red"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_vertical"
+                        android:text="In this class you will learn every thing about Lerem"
+                        android:textColor="@color/txtdes"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardBuyNow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="25dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Buy Now"
+                        android:fontFamily="@font/leaguespartan_regular"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:layout_centerVertical="true"/>
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</layout>
