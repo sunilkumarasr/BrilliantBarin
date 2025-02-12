@@ -44,6 +44,8 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener, NavigationV
     lateinit var imgEdit: CardView
     lateinit var profilepic: ImageView
     lateinit var profile_name: TextView
+    lateinit var txtEmail: TextView
+    lateinit var txtMobile: TextView
 
     private lateinit var bottomNavigationView: BottomNavigationView
 
@@ -73,6 +75,8 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener, NavigationV
         navView.setNavigationItemSelectedListener(this)
         val headerView: View = binding.navView.getHeaderView(0)
         profile_name = headerView.findViewById(R.id.txtName)
+        txtEmail = headerView.findViewById(R.id.txtEmail)
+        txtMobile = headerView.findViewById(R.id.txtMobile)
         profilepic = headerView.findViewById(R.id.profileImage)
         imgEdit = headerView.findViewById(R.id.imgEdit)
         imgEdit.setOnClickListener {
@@ -85,7 +89,7 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener, NavigationV
 
 
         bottomMenu()
-        //getProfileApi()
+        getProfileApi()
 
         binding.imgNotification.setOnClickListener(this)
 
@@ -167,9 +171,11 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener, NavigationV
                     val rsp = response.body()
                     if (rsp != null) {
                         profile_name.text = rsp.data?.name.toString()
-                        if (!rsp.data?.image.equals("")){
-                            Glide.with(profilepic).load(rsp.data?.image).into(profilepic)
-                        }
+                        txtMobile.text = rsp.data?.phone.toString()
+                        txtEmail.text = rsp.data?.email.toString()
+//                        if (!rsp.data?.image.equals("")){
+//                            Glide.with(profilepic).load(rsp.data?.image).into(profilepic)
+//                        }
                     }
                 }
             }

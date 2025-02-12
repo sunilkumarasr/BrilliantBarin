@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import com.royalit.brilliantbrain.Activitys.AboutUsActivity
 import com.royalit.brilliantbrain.Activitys.ContactUsActivity
+import com.royalit.brilliantbrain.Activitys.EditProfileActivity
 import com.royalit.brilliantbrain.Activitys.FaqActivity
 import com.royalit.brilliantbrain.Activitys.HelpAndSupportActivity
 import com.royalit.brilliantbrain.Activitys.MyOrdersActivity
@@ -50,7 +51,7 @@ class ProfileFragment : Fragment(), View.OnClickListener  {
 
     private fun init() {
 
-       // getProfileApi()
+        getProfileApi()
 
         binding.imgEdit.setOnClickListener(this)
         binding.linearMyOrders.setOnClickListener(this)
@@ -77,13 +78,11 @@ class ProfileFragment : Fragment(), View.OnClickListener  {
                     if (rsp != null) {
                         binding.txtName.text = rsp.data?.name.toString()
                         binding.txtEmail.text = rsp.data?.email.toString()
-                        binding.txtMobile.text = rsp.data?.country_code.toString()+"-"+rsp.data?.phone.toString()
-                        if (!rsp.data?.image.equals("")){
-                            Glide.with(binding.profileImage).load(rsp.data?.image).into(binding.profileImage)
-                        }
+                        binding.txtMobile.text = rsp.data?.phone.toString()
+//                        if (!rsp.data?.image.equals("")){
+//                            Glide.with(binding.profileImage).load(rsp.data?.image).into(binding.profileImage)
+//                        }
                     }
-                } else {
-                    ViewController.showToast(requireActivity(), "Error: ${response.code()}")
                 }
             }
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
@@ -98,7 +97,7 @@ class ProfileFragment : Fragment(), View.OnClickListener  {
         when (v?.id) {
 
             R.id.imgEdit -> {
-             //   startActivity(Intent(activity, EditProfileActivity::class.java))
+                startActivity(Intent(activity, EditProfileActivity::class.java))
             }
             R.id.linearMyOrders -> {
                 startActivity(Intent(activity, MyOrdersActivity::class.java))

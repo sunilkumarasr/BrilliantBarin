@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.royalit.brilliantbrain.AdaptersAndModels.TermsConditionsResponse
 import com.royalit.brilliantbrain.Config.ViewController
 import com.royalit.brilliantbrain.R
@@ -39,7 +40,7 @@ class TermsAndConditionsActivity : AppCompatActivity() {
         if(!ViewController.noInterNetConnectivity(applicationContext)){
             ViewController.showToast(applicationContext, "Please check your connection ")
         }else{
-            //termsConditionsApi()
+            termsConditionsApi()
         }
     }
 
@@ -52,6 +53,9 @@ class TermsAndConditionsActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val response = response.body()
                     if (response != null) {
+                        if (!response.image.equals("")){
+                            Glide.with(binding.imgBanner).load(response.image).into(binding.imgBanner)
+                        }
                         binding.txtNote.text = Html.fromHtml(response.description, Html.FROM_HTML_MODE_LEGACY)
                     }
                 } else {

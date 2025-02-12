@@ -8,6 +8,8 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import com.royalit.brilliantbrain.AdaptersAndModels.LoginRequest
 import com.royalit.brilliantbrain.AdaptersAndModels.LoginResponse
+import com.royalit.brilliantbrain.AdaptersAndModels.RegisterRequest
+import com.royalit.brilliantbrain.AdaptersAndModels.RegisterResponse
 import com.royalit.brilliantbrain.Config.Preferences
 import com.royalit.brilliantbrain.Config.ViewController
 import com.royalit.brilliantbrain.Retrofit.RetrofitClient
@@ -73,53 +75,38 @@ class LoginActivity : AppCompatActivity() {
         if (!validateEmail(email)) {
             ViewController.showToast(applicationContext, "Enter Valid email")
         }else{
-            startActivity(Intent(this@LoginActivity,OTPActivity::class.java).apply {
-                putExtra("email",binding.emailEdit.editableText.trim().toString())
-                putExtra("type","Login")
-            })
-            finish()
 
+            val loginRequest = LoginRequest(
+                email = email,
+                password = password_
+            )
 
-//            ViewController.showLoading(this@LoginActivity)
-//
-//            val apiInterface = RetrofitClient.apiInterface
-//            val loginRequest = LoginRequest(email, password_)
-//
-//            apiInterface.loginApi(loginRequest).enqueue(object : Callback<LoginResponse> {
-//                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-//                    ViewController.hideLoading()
-//                    if (response.isSuccessful) {
-//                        val loginResponse = response.body()
-//                        if (loginResponse != null && loginResponse.status.equals("success")) {
-//                            Preferences.saveStringValue(applicationContext, Preferences.userId,
-//                                loginResponse.user?.id.toString()
-//                            )
-//                            Preferences.saveStringValue(applicationContext, Preferences.name,
-//                                loginResponse.user?.name.toString()
-//                            )
-//                            Preferences.saveStringValue(applicationContext, Preferences.location,
-//                                loginResponse.user?.location.toString()
-//                            )
-//                            startActivity(Intent(this@LoginActivity,OTPActivity::class.java).apply {
-//                                putExtra("email",binding.emailEdit.editableText.trim().toString())
-//                                putExtra("type","Login")
-//                            })
-//                            finish()
-//                        } else {
-//                            if (loginResponse != null) {
-//                                ViewController.showToast(applicationContext, loginResponse.message.toString())
-//                            }
-//                        }
-//                    } else {
-//                        ViewController.showToast(applicationContext, "Error: ${response.code()}")
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-//                    ViewController.hideLoading()
-//                    ViewController.showToast(applicationContext, "Try again: ${t.message}")
-//                }
-//            })
+            ViewController.showLoading(this@LoginActivity)
+
+            RetrofitClient.apiInterface.loginApi(loginRequest).enqueue(object : Callback<LoginResponse> {
+
+                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+
+                    ViewController.hideLoading()
+                    var strRes= response.body();
+                    if (strRes!!.status.equals("success")) {
+                        ViewController.showToast(applicationContext, "success")
+                        startActivity(Intent(this@LoginActivity,OTPActivity::class.java).apply {
+                            putExtra("email",binding.emailEdit.editableText.trim().toString())
+                            putExtra("password",password_)
+                            putExtra("type","Login")
+                        })
+                        finish()
+                    }else{
+                        ViewController.showToast(applicationContext, "Login Failed")
+                    }
+                }
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    ViewController.hideLoading()
+                    ViewController.showToast(applicationContext, "Login Failed")
+                }
+            }
+            )
 
         }
     }

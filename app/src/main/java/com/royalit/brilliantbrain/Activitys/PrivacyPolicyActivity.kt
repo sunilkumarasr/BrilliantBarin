@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.royalit.brilliantbrain.AdaptersAndModels.PrivacyPolicyResponse
 import com.royalit.brilliantbrain.Config.ViewController
 import com.royalit.brilliantbrain.R
@@ -39,7 +40,7 @@ class PrivacyPolicyActivity : AppCompatActivity() {
         if(!ViewController.noInterNetConnectivity(applicationContext)){
             ViewController.showToast(applicationContext, "Please check your connection ")
         }else{
-            //privacyPolicyApi()
+            privacyPolicyApi()
         }
     }
 
@@ -52,6 +53,9 @@ class PrivacyPolicyActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val loginResponse = response.body()
                     if (loginResponse != null) {
+                        if (!loginResponse.image.equals("")){
+                            Glide.with(binding.imgBanner).load(loginResponse.image).into(binding.imgBanner)
+                        }
                         binding.txtNote.text = Html.fromHtml(loginResponse.description, Html.FROM_HTML_MODE_LEGACY)
                     }
                 } else {

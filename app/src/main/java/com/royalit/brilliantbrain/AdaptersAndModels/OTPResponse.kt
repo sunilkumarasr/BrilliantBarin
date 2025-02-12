@@ -18,6 +18,5 @@ data class UserOtp(
 
 data class OTPRequest(
     val email: String,
-    val otp: String,
-    val firebase_token: String
+    val otp: String
 )

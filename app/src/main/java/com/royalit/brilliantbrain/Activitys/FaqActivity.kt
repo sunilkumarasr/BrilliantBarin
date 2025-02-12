@@ -38,7 +38,7 @@ class FaqActivity : AppCompatActivity() {
             ViewController.showToast(this@FaqActivity, "Please check your connection ")
             return
         }else {
-            //faqListApi()
+            faqListApi()
         }
 
     }

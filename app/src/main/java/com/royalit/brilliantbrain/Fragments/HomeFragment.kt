@@ -15,6 +15,7 @@ import com.royalit.brilliantbrain.AdaptersAndModels.Home.HomeCategoriesAdapter
 import com.royalit.brilliantbrain.AdaptersAndModels.Home.HomeBannersModel
 import com.royalit.brilliantbrain.AdaptersAndModels.JobAlerts.AllClasssHomeAdapter
 import com.royalit.brilliantbrain.AdaptersAndModels.JobAlerts.JobAlertModel
+import com.royalit.brilliantbrain.Config.Preferences
 import com.royalit.brilliantbrain.Config.ViewController
 import com.royalit.brilliantbrain.R
 import com.royalit.brilliantbrain.Retrofit.RetrofitClient
@@ -42,6 +43,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun init() {
+
+        val name = Preferences.loadStringValue(requireActivity(), Preferences.name, "")
+
+        binding.txtName.setText("Hey "+name)
+
         if (!ViewController.noInterNetConnectivity(requireActivity())) {
             ViewController.showToast(requireActivity(), "Please check your connection ")
             return

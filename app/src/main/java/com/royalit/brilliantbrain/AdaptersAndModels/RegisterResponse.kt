@@ -10,11 +10,6 @@ data class RegisterResponse(
 data class RegisterRequest(
     val name: String,
     val email: String,
-    val country_code: String,
     val phone: String,
-    val location: String,
-    val km: String,
-    val latitude: String,
-    val longitude: String,
     val password: String
 )

@@ -57,28 +57,19 @@ import retrofit2.http.Query
 
 interface ApiInterface {
 
-    //logins
-    @POST("register")
+    //register
+    @POST("registration")
     fun registerApi(@Body registerRequest: RegisterRequest): Call<RegisterResponse>
 
     @POST("login")
     fun loginApi(@Body loginRequest: LoginRequest): Call<LoginResponse>
 
-    @POST("forgot_password")
-    fun forgotEmailApi(@Body loginRequest: EmailRequest): Call<ForgotEmailResponse>
-
     @POST("verify_otp")
     fun otpApi(@Body loginRequest: OTPRequest): Call<OTPResponse>
 
-    @POST("reset_password")
-    fun createApi(@Body createRequest: CreatePasswordRequest): Call<CreatePasswordResponse>
-
-    //menu
-    @POST("help_support")
-    fun HelpAndSupportApi(@Body helpSupprtRequest: HelpAndSupportRequest): Call<HelpAndSupportResponse>
-
     @GET("profile_get")
     fun getProfileApi(@Query("id") id: String?): Call<ProfileResponse>
+
 
     @Multipart
     @POST("update_profile")
@@ -86,14 +77,41 @@ interface ApiInterface {
         @Part("user_id") user_id: RequestBody,
         @Part("name") name: RequestBody,
         @Part("email") email: RequestBody,
-        @Part("country_code") country_code: RequestBody,
         @Part("phone") phone: RequestBody,
-        @Part("location") location: RequestBody,
-        @Part("latitude") latitude: RequestBody,
-        @Part("longitude") longitude: RequestBody,
-        @Part("km") km: RequestBody,
         @Part image: MultipartBody.Part
     ): Call<UpdateProfileResponse>
+
+    @GET("aboutus")
+    fun aboutusApi(): Call<AboutusResponse>
+
+    @GET("terms_conditions")
+    fun termsConditionsApi(): Call<TermsConditionsResponse>
+
+    @GET("contactus")
+    fun contactUsApi(): Call<ContactUsResponse>
+
+    @GET("privacy_policy")
+    fun privacyPolicyApi(): Call<PrivacyPolicyResponse>
+
+    @GET("faq")
+    fun faqListApi(): Call<List<FaqModel>>
+
+    @POST("forgot_password")
+    fun forgotEmailApi(@Body loginRequest: EmailRequest): Call<ForgotEmailResponse>
+
+    @POST("help_support")
+    fun HelpAndSupportApi(@Body helpSupprtRequest: HelpAndSupportRequest): Call<HelpAndSupportResponse>
+
+
+
+
+
+
+
+    @POST("reset_password")
+    fun createApi(@Body createRequest: CreatePasswordRequest): Call<CreatePasswordResponse>
+
+
 
     @Multipart
     @POST("update_user_location")
@@ -104,23 +122,11 @@ interface ApiInterface {
         @Part("longitude") longitude: RequestBody
     ): Call<UpdateLocationResponse>
 
-    @GET("aboutus")
-    fun aboutusApi(): Call<AboutusResponse>
 
-    @GET("privacy_policy")
-    fun privacyPolicyApi(): Call<PrivacyPolicyResponse>
-
-    @GET("terms_conditions")
-    fun termsConditionsApi(): Call<TermsConditionsResponse>
-
-    @GET("contactus")
-    fun contactUsApi(): Call<ContactUsResponse>
 
     @GET("job_alerts")
     fun jobAlertApi(): Call<List<JobAlertModel>>
 
-    @GET("faq")
-    fun faqListApi(): Call<List<FaqModel>>
 
     //home
     @GET("home_banner_list")

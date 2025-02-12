@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.royalit.brilliantbrain.AdaptersAndModels.ContactUsResponse
 import com.royalit.brilliantbrain.AdaptersAndModels.SocialMediaModel
 import com.royalit.brilliantbrain.Config.ViewController
@@ -45,7 +46,7 @@ class ContactUsActivity : AppCompatActivity() {
         if(!ViewController.noInterNetConnectivity(applicationContext)){
             ViewController.showToast(applicationContext, "Please check your connection ")
         }else{
-           // contactUsApi()
+            contactUsApi()
            // socialMediaApi()
         }
 
@@ -74,6 +75,9 @@ class ContactUsActivity : AppCompatActivity() {
                         binding.txtPhone.text = rsp.phone
                         binding.txtEmail.text = rsp.email
                         binding.txtAddress.text = rsp.address
+                        if (!rsp.logo.equals("")){
+                            Glide.with(binding.imgBanner).load(rsp.logo).into(binding.imgBanner)
+                        }
                     }
                 } else {
                     ViewController.showToast(applicationContext, "Error: ${response.code()}")

@@ -11,10 +11,9 @@ object Preferences {
     const val LOGINCHECK = "LOGINCHECK"
     const val userId = "userId"
     const val name = "name"
-    const val lat = "lat"
-    const val longi = "longi"
+    const val email = "email"
+    const val phone = "phone"
     const val location = "location"
-    const val km = "km"
 
     private fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)

@@ -10,7 +10,10 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.royalit.brilliantbrain.AdaptersAndModels.RegisterRequest
+import com.royalit.brilliantbrain.AdaptersAndModels.RegisterResponse
 import com.royalit.brilliantbrain.Config.ViewController
+import com.royalit.brilliantbrain.Retrofit.RetrofitClient
 import com.royalit.brilliantbrain.databinding.ActivityRegisterBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -74,43 +77,42 @@ class RegisterActivity : AppCompatActivity(){
             return
         }
 
-
         if (!validateEmail(email)) {
+            ViewController.showToast(applicationContext, "Enter Valid Email")
+        }else if (!validateMobileNumber(mobileNumber_)) {
             ViewController.showToast(applicationContext, "Enter Valid Email")
         }else{
 
-            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+            val registerRequest = RegisterRequest(
+                name = name_,
+                email = email,
+                phone = mobileNumber_,
+                password = password_
+            )
 
-//            ViewController.showLoading(this@RegisterActivity)
-//
-//            val apiInterface = RetrofitClient.apiInterface
-//            val registerRequest = RegisterRequest(name_, email, mobileNumber_, password_)
-//
-//            apiInterface.registerApi(registerRequest).enqueue(object : Callback<RegisterResponse> {
-//                override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
-//                    ViewController.hideLoading()
-//                    if (response.isSuccessful) {
-//                        val loginResponse = response.body()
-//                        if (loginResponse != null && loginResponse.status.equals("success")) {
-//                            ViewController.showToast(applicationContext, "success please Login")
-//                            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
-//                        } else {
-//                            if (loginResponse != null) {
-//                                ViewController.showToast(applicationContext, loginResponse.message.toString())
-//                            }
-//                        }
-//                    } else {
-//                        ViewController.showToast(applicationContext, "Error: ${response.code()}")
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
-//                    ViewController.hideLoading()
-//                    ViewController.showToast(applicationContext, "Try again: ${t.message}")
-//                }
-//
-//            })
+            ViewController.showLoading(this@RegisterActivity)
 
+            RetrofitClient.apiInterface.registerApi(registerRequest).enqueue(object : Callback<RegisterResponse> {
+
+                override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+
+                    ViewController.hideLoading()
+                    var strRes= response.body();
+                    if (strRes!!.status.equals("success")) {
+                        ViewController.showToast(applicationContext, "success")
+                        val intent= Intent(applicationContext, LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }else{
+                        ViewController.showToast(applicationContext, "Already registered with us")
+                    }
+                }
+                override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                    ViewController.hideLoading()
+                    ViewController.showToast(applicationContext, "Already registered with us")
+                }
+            }
+            )
         }
     }
 

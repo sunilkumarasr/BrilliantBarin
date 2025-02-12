@@ -13,12 +13,16 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.errorprone.annotations.Var
 import com.google.firebase.messaging.FirebaseMessaging
 import com.royalit.brilliantbrain.Activitys.DashBoardActivity
 import com.royalit.brilliantbrain.AdaptersAndModels.EmailRequest
 import com.royalit.brilliantbrain.AdaptersAndModels.ForgotEmailResponse
+import com.royalit.brilliantbrain.AdaptersAndModels.LoginRequest
+import com.royalit.brilliantbrain.AdaptersAndModels.LoginResponse
 import com.royalit.brilliantbrain.AdaptersAndModels.OTPRequest
 import com.royalit.brilliantbrain.AdaptersAndModels.OTPResponse
+import com.royalit.brilliantbrain.Config.Preferences
 import com.royalit.brilliantbrain.Config.ViewController
 import com.royalit.brilliantbrain.R
 import com.royalit.brilliantbrain.Retrofit.RetrofitClient
@@ -34,6 +38,7 @@ class OTPActivity : AppCompatActivity() {
     }
 
     lateinit var email:String
+    lateinit var password:String
     lateinit var type:String
     lateinit var token: String
 
@@ -50,6 +55,7 @@ class OTPActivity : AppCompatActivity() {
         ViewController.changeStatusBarColor(this, ContextCompat.getColor(this, R.color.blue), false)
 
         email= intent.getStringExtra("email").toString()
+        password= intent.getStringExtra("password").toString()
         type= intent.getStringExtra("type").toString()
 
 
@@ -142,7 +148,7 @@ class OTPActivity : AppCompatActivity() {
 
         binding.txtResend.setOnClickListener {
             //resend otp
-            forgotApi()
+            loginApi()
         }
 
 
@@ -157,49 +163,45 @@ class OTPActivity : AppCompatActivity() {
         val pin3 = binding.pinEdit3.editableText.trim().toString()
         val pin4 = binding.pinEdit4.editableText.trim().toString()
 
-
         if(validateOtp()){
-            startActivity(Intent(this@OTPActivity, DashBoardActivity::class.java))
 
-//            if(!ViewController.noInterNetConnectivity(applicationContext)){
-//                ViewController.showToast(applicationContext, "Please check your connection ")
-//                return
-//            }else{
-//                ViewController.showLoading(this@OTPActivity)
-//
-//                val apiInterface = RetrofitClient.apiInterface
-//                val loginRequest = OTPRequest(email, "$pin1$pin2$pin3$pin4",token)
-//
-//                apiInterface.otpApi(loginRequest).enqueue(object : Callback<OTPResponse> {
-//                    override fun onResponse(call: Call<OTPResponse>, response: Response<OTPResponse>) {
-//                        ViewController.hideLoading()
-//                        if (response.isSuccessful) {
-//                            val loginResponse = response.body()
-//                            if (loginResponse != null && loginResponse.status.equals("success")) {
-//                                if (type.equals("Login")){
-//                                    startActivity(Intent(this@OTPActivity, DashBoardActivity::class.java))
-//                                }else{
-//                                    startActivity(Intent(this@OTPActivity,CreatePasswordActivity::class.java).apply {
-//                                        putExtra("email",email)
-//                                    })
-//                                    finish()
-//                                }
-//
-//                            } else {
-//                                ViewController.showToast(applicationContext, "Otp Failed")
-//                            }
-//                        } else {
-//                            ViewController.showToast(applicationContext, "Error: ${response.code()}")
-//                        }
-//                    }
-//
-//                    override fun onFailure(call: Call<OTPResponse>, t: Throwable) {
-//                        ViewController.hideLoading()
-//                        ViewController.showToast(applicationContext, "Try again: ${t.message}")
-//                    }
-//                })
-//            }
+            val oTPRequest = OTPRequest(
+                email = email,
+                otp = pin1+pin2+pin3+pin4
+            )
 
+            ViewController.showLoading(this@OTPActivity)
+
+            RetrofitClient.apiInterface.otpApi(oTPRequest).enqueue(object : Callback<OTPResponse> {
+
+                override fun onResponse(call: Call<OTPResponse>, response: Response<OTPResponse>) {
+
+                    ViewController.hideLoading()
+                    var strRes= response.body();
+                    if (strRes!!.status.equals("success")) {
+                        ViewController.showToast(applicationContext, "success")
+
+                        if (type.equals("Login")){
+                            Preferences.saveStringValue(applicationContext, Preferences.userId, strRes!!.user?.id.toString())
+                            Preferences.saveStringValue(applicationContext, Preferences.name, strRes!!.user?.name.toString())
+                            Preferences.saveStringValue(applicationContext, Preferences.email, strRes!!.user?.email.toString())
+                            Preferences.saveStringValue(applicationContext, Preferences.phone, strRes!!.user?.phone.toString())
+
+                            startActivity(Intent(this@OTPActivity, DashBoardActivity::class.java))
+                        }else{
+                            startActivity(Intent(this@OTPActivity, CreatePasswordActivity::class.java))
+                        }
+
+                    }else{
+                        ViewController.showToast(applicationContext, "Failed")
+                    }
+                }
+                override fun onFailure(call: Call<OTPResponse>, t: Throwable) {
+                    ViewController.hideLoading()
+                    ViewController.showToast(applicationContext, "Failed")
+                }
+            }
+            )
         }else{
             ViewController.showToast(applicationContext, "enter valid otp")
         }
@@ -216,35 +218,36 @@ class OTPActivity : AppCompatActivity() {
 
 
     //resend otp
-    private fun forgotApi() {
+    private fun loginApi() {
         if(!ViewController.noInterNetConnectivity(applicationContext)){
             ViewController.showToast(applicationContext, "Please check your connection ")
             return
         }else{
+            val loginRequest = LoginRequest(
+                email = email,
+                password = password
+            )
+
             ViewController.showLoading(this@OTPActivity)
 
-            val apiInterface = RetrofitClient.apiInterface
-            val forgotRequest = EmailRequest(email)
+            RetrofitClient.apiInterface.loginApi(loginRequest).enqueue(object : Callback<LoginResponse> {
 
-            apiInterface.forgotEmailApi(forgotRequest).enqueue(object : Callback<ForgotEmailResponse> {
-                override fun onResponse(call: Call<ForgotEmailResponse>, response: Response<ForgotEmailResponse>) {
+                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+
                     ViewController.hideLoading()
-                    if (response.isSuccessful) {
-                        val loginResponse = response.body()
-                        if (loginResponse != null && loginResponse.status.equals("success")) {
-                            ViewController.showToast(applicationContext, "Success")
-                        } else {
-                            ViewController.showToast(applicationContext, "Otp Sending failed")
-                        }
-                    } else {
-                        ViewController.showToast(applicationContext, "Error: ${response.code()}")
+                    var strRes= response.body();
+                    if (strRes!!.status.equals("success")) {
+                        ViewController.showToast(applicationContext, "success")
+                    }else{
+                        ViewController.showToast(applicationContext, "Send Failed")
                     }
                 }
-                override fun onFailure(call: Call<ForgotEmailResponse>, t: Throwable) {
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     ViewController.hideLoading()
-                    ViewController.showToast(applicationContext, "Try again: ${t.message}")
+                    ViewController.showToast(applicationContext, "Send Failed")
                 }
-            })
+            }
+            )
         }
     }
 

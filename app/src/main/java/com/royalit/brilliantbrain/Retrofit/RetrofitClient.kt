@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
-    private const val BASE_URL = "https://divyaangdisha.com/disability/api/"
-    const val Image_Path = "https://divyaangdisha.com/disability/"
+    private const val BASE_URL = "http://ritps.com/brilliant_brain/api/"
+    const val Image_Path = "http://ritps.com/brilliant_brain/"
     const val MapKey = "AIzaSyCMpzC9h1qmCRgC6SYHVzKhn4vFHztXp-A"
 //    const val MapKey = "AIzaSyCMpzC9h1qmCRgC6SYHVzKhn4vFHztXp-A"
 //    const val MapKey = "AIzaSyASaGw-Knef0CC9LZI7pcQh66_ywg6xrT8"

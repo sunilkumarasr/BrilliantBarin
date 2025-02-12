@@ -21,6 +21,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgBanner"
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
                     android:src="@drawable/contactus_ic"/>
@@ -30,7 +31,6 @@
                     android:layout_height="wrap_content"
                     android:padding="15dp"
                     android:layout_gravity="center"
-                    android:text="@string/note"
                     android:fontFamily="@font/teachers_regular"
                     android:textColor="@color/text"
                     android:textSize="15sp"

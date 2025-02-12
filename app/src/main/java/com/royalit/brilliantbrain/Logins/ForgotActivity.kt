@@ -55,42 +55,36 @@ class ForgotActivity : AppCompatActivity() {
         if (!validateEmail(email)) {
             ViewController.showToast(applicationContext, "Enter Valid email")
         }else{
-            startActivity(Intent(this@ForgotActivity,OTPActivity::class.java).apply {
-                putExtra("email",binding.emailEdit.editableText.trim().toString())
-                putExtra("type","Forgot")
+
+            ViewController.showLoading(this@ForgotActivity)
+
+            val apiInterface = RetrofitClient.apiInterface
+            val forgotRequest = EmailRequest(email)
+
+            apiInterface.forgotEmailApi(forgotRequest).enqueue(object : Callback<ForgotEmailResponse> {
+                override fun onResponse(call: Call<ForgotEmailResponse>, response: Response<ForgotEmailResponse>) {
+                    ViewController.hideLoading()
+                    if (response.isSuccessful) {
+                        val loginResponse = response.body()
+                        if (loginResponse != null && loginResponse.status.equals("success")) {
+                            startActivity(Intent(this@ForgotActivity,OTPActivity::class.java).apply {
+                                putExtra("email",binding.emailEdit.editableText.trim().toString())
+                                putExtra("type","Forgot")
+                            })
+                            finish()
+                        } else {
+                            ViewController.showToast(applicationContext, "Wrong Email Address")
+                        }
+                    } else {
+                        ViewController.showToast(applicationContext, "Error: ${response.code()}")
+                    }
+                }
+
+                override fun onFailure(call: Call<ForgotEmailResponse>, t: Throwable) {
+                    ViewController.hideLoading()
+                    ViewController.showToast(applicationContext, "Try again: ${t.message}")
+                }
             })
-            finish()
-
-
-//            ViewController.showLoading(this@ForgotActivity)
-//
-//            val apiInterface = RetrofitClient.apiInterface
-//            val forgotRequest = EmailRequest(email)
-//
-//            apiInterface.forgotEmailApi(forgotRequest).enqueue(object : Callback<ForgotEmailResponse> {
-//                override fun onResponse(call: Call<ForgotEmailResponse>, response: Response<ForgotEmailResponse>) {
-//                    ViewController.hideLoading()
-//                    if (response.isSuccessful) {
-//                        val loginResponse = response.body()
-//                        if (loginResponse != null && loginResponse.status.equals("success")) {
-//                            startActivity(Intent(this@ForgotActivity,OTPActivity::class.java).apply {
-//                                putExtra("email",binding.emailEdit.editableText.trim().toString())
-//                                putExtra("type","Forgot")
-//                            })
-//                            finish()
-//                        } else {
-//                            ViewController.showToast(applicationContext, "Wrong Email Address")
-//                        }
-//                    } else {
-//                        ViewController.showToast(applicationContext, "Error: ${response.code()}")
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<ForgotEmailResponse>, t: Throwable) {
-//                    ViewController.hideLoading()
-//                    ViewController.showToast(applicationContext, "Try again: ${t.message}")
-//                }
-//            })
 
         }
     }
