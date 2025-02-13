@@ -106,7 +106,6 @@ class HelpAndSupportActivity : AppCompatActivity() {
 
     }
 
-
     private fun validateEmail(email: String): Boolean {
         val emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
         return email.matches(Regex(emailPattern))

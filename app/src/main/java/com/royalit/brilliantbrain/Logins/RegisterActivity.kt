@@ -48,6 +48,7 @@ class RegisterActivity : AppCompatActivity(){
         val name_=binding.nameEdit.text.toString()
         val email=binding.emailEdit.text?.trim().toString()
         val mobileNumber_=binding.mobileEdit.text?.trim().toString()
+        val agent_id_=binding.agentEdit.text?.trim().toString()
         val password_=binding.passwordEdit.text?.trim().toString()
         val Cpassword_=binding.CpasswordEdit.text?.trim().toString()
 
@@ -61,6 +62,11 @@ class RegisterActivity : AppCompatActivity(){
         }
         if(mobileNumber_.isEmpty()){
             ViewController.showToast(applicationContext, "Enter mobile number")
+            return
+        }
+
+        if(agent_id_.isEmpty()){
+            ViewController.showToast(applicationContext, "Enter agent id")
             return
         }
 
@@ -80,14 +86,15 @@ class RegisterActivity : AppCompatActivity(){
         if (!validateEmail(email)) {
             ViewController.showToast(applicationContext, "Enter Valid Email")
         }else if (!validateMobileNumber(mobileNumber_)) {
-            ViewController.showToast(applicationContext, "Enter Valid Email")
+            ViewController.showToast(applicationContext, "Enter Valid mobile number")
         }else{
 
             val registerRequest = RegisterRequest(
                 name = name_,
                 email = email,
                 phone = mobileNumber_,
-                password = password_
+                password = password_,
+                agent_id = agent_id_,
             )
 
             ViewController.showLoading(this@RegisterActivity)
@@ -104,7 +111,7 @@ class RegisterActivity : AppCompatActivity(){
                         startActivity(intent)
                         finish()
                     }else{
-                        ViewController.showToast(applicationContext, "Already registered with us")
+                        ViewController.showToast(applicationContext, strRes!!.message.toString())
                     }
                 }
                 override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
