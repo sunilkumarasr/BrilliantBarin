@@ -24,7 +24,7 @@ import com.royalit.brilliantbrain.Config.ViewController
 import com.royalit.brilliantbrain.Fragments.ClassesFragment
 import com.royalit.brilliantbrain.Fragments.HomeFragment
 import com.royalit.brilliantbrain.Fragments.ProfileFragment
-import com.royalit.brilliantbrain.Fragments.SubjectsFragment
+import com.royalit.brilliantbrain.Fragments.MyCourses
 import com.royalit.brilliantbrain.Logins.LoginActivity
 import com.royalit.brilliantbrain.R
 import com.royalit.brilliantbrain.Retrofit.RetrofitClient
@@ -52,7 +52,7 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener, NavigationV
     //fragments
     private val homeFragment = HomeFragment()
     private val classesFragment = ClassesFragment()
-    private val subjectFragment = SubjectsFragment()
+    private val subjectFragment = MyCourses()
     private val profileFragment = ProfileFragment()
 
 
@@ -139,7 +139,7 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener, NavigationV
                 }
 
                 R.id.subjects -> {
-                    binding.txtTitle.setText("Subjects")
+                    binding.txtTitle.setText("My Courses")
                     replaceFragment(subjectFragment)
                     true
                 }
@@ -173,9 +173,9 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener, NavigationV
                         profile_name.text = rsp.data?.name.toString()
                         txtMobile.text = rsp.data?.phone.toString()
                         txtEmail.text = rsp.data?.email.toString()
-//                        if (!rsp.data?.image.equals("")){
-//                            Glide.with(profilepic).load(rsp.data?.image).into(profilepic)
-//                        }
+                        if (!rsp.data?.image.equals("")){
+                            Glide.with(profilepic).load(rsp.data?.image).into(profilepic)
+                        }
                     }
                 }
             }

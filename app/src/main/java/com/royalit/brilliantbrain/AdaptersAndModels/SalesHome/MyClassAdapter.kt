@@ -6,12 +6,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.royalit.brilliantbrain.AdaptersAndModels.Categorys.CategoriesModel
 import com.royalit.brilliantbrain.R
+import com.royalit.brilliantbrain.Retrofit.RetrofitClient
 
-class SubjectAdapter(
-    private var items: List<ProductData>,
-    private val onItemClick: (ProductData) -> Unit // Click listener function
-) : RecyclerView.Adapter<SubjectAdapter.ViewHolder>() {
+class MyClassAdapter(
+    private var items: List<CategoriesModel>,
+    private val onItemClick: (CategoriesModel) -> Unit // Click listener function
+) : RecyclerView.Adapter<MyClassAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgLogo: ImageView = itemView.findViewById(R.id.imgLogo)
@@ -38,13 +41,14 @@ class SubjectAdapter(
         val item = items[position]
 
 
-//        Glide.with(holder.imgLogo)
-//            .load(RetrofitClient.Image_Path + firstImageUrl)
-//            .placeholder(R.drawable.close_ic)
-//            .error(R.drawable.close_ic)
-//            .into(holder.imgLogo)
+        Glide.with(holder.imgLogo)
+            .load(RetrofitClient.Image_Path + item.image)
+            .placeholder(R.drawable.close_ic)
+            .error(R.drawable.close_ic)
+            .into(holder.imgLogo)
 
-      //  holder.txtTitle.text = item.product.product
+        holder.txtTitle.text = item.class_name
+        holder.txtDec.text = item.description
 
 
     }

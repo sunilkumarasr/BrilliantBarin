@@ -41,8 +41,12 @@ import com.royalit.brilliantbrain.AdaptersAndModels.SalesHome.SaleModel
 import com.royalit.brilliantbrain.AdaptersAndModels.SocialMediaModel
 import com.royalit.brilliantbrain.AdaptersAndModels.State.StateModel
 import com.royalit.brilliantbrain.AdaptersAndModels.SubCategoriesItems.SubCategoriesItemsModel
+import com.royalit.brilliantbrain.AdaptersAndModels.SubjectRequest
+import com.royalit.brilliantbrain.AdaptersAndModels.SubjectResponse
 import com.royalit.brilliantbrain.AdaptersAndModels.UpdateLocationResponse
 import com.royalit.brilliantbrain.AdaptersAndModels.UpdateProfileResponse
+import com.royalit.brilliantbrain.AdaptersAndModels.VideosRequest
+import com.royalit.brilliantbrain.AdaptersAndModels.VideosResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -102,10 +106,20 @@ interface ApiInterface {
     @POST("help_support")
     fun HelpAndSupportApi(@Body helpSupprtRequest: HelpAndSupportRequest): Call<HelpAndSupportResponse>
 
+    @GET("class")
+    fun classApi(): Call<List<CategoriesModel>>
 
+    @POST("subject")
+    fun subjectsApi(@Body subjectResponse: SubjectRequest): Call<List<SubjectResponse>>
 
+    @POST("get_videos_by_topic")
+    fun getVideosByTopicApi(@Body videosRequest: VideosRequest): Call<VideosResponse>
 
+    @GET("class")
+    fun myClassApi(): Call<List<CategoriesModel>>
 
+    @POST("subject")
+    fun myOrdersDetailsApi(@Body subjectResponse: SubjectRequest): Call<List<SubjectResponse>>
 
 
     @POST("reset_password")
@@ -214,8 +228,6 @@ interface ApiInterface {
     @GET("listing_banner_list")
     fun PostBannersApi(): Call<List<PostBannersModel>>
 
-    @GET("categories")
-    fun categoriesApi(): Call<List<CategoriesModel>>
 
     @POST("listing_enquiry")
     fun enqueryApi(@Body enqueryRequest: EnqueryRequest): Call<EnqueryResponse>

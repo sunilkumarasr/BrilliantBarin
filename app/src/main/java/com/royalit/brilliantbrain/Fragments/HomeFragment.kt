@@ -1,16 +1,25 @@
 package com.royalit.brilliantbrain.Fragments
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.denzcoskun.imageslider.models.SlideModel
+import com.royalit.brilliantbrain.Activitys.ClassDetailsActivity
 import com.royalit.brilliantbrain.Activitys.DashBoardActivity
+import com.royalit.brilliantbrain.Activitys.SearchActivity
+import com.royalit.brilliantbrain.Activitys.SeeAllClassActivity
 import com.royalit.brilliantbrain.AdaptersAndModels.Categorys.CategoriesModel
+import com.royalit.brilliantbrain.AdaptersAndModels.Categorys.ClassesHomeAdapter
+import com.royalit.brilliantbrain.AdaptersAndModels.Home.BannerAdapter
 import com.royalit.brilliantbrain.AdaptersAndModels.Home.HomeCategoriesAdapter
 import com.royalit.brilliantbrain.AdaptersAndModels.Home.HomeBannersModel
 import com.royalit.brilliantbrain.AdaptersAndModels.JobAlerts.AllClasssHomeAdapter
@@ -25,6 +34,8 @@ import com.royalit.brilliantbrain.databinding.FragmentHomeBinding
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+
+    private lateinit var bannerAdapter: BannerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,9 +64,19 @@ class HomeFragment : Fragment() {
             return
         } else {
             HomebannersApi()
-            categoriesApi()
-            allClassestApi()
+            classApi()
+            //allClassestApi()
         }
+
+
+        binding.linearSearch.setOnClickListener {
+            startActivity(Intent(requireActivity(), SearchActivity::class.java))
+        }
+
+        binding.txtSeeAll.setOnClickListener {
+            startActivity(Intent(requireActivity(), SeeAllClassActivity::class.java))
+        }
+
     }
 
     private fun HomebannersApi() {
@@ -80,26 +101,40 @@ class HomeFragment : Fragment() {
         })
     }
     private fun BannerDataSet(banners: List<HomeBannersModel>) {
-        val imageList = mutableListOf<SlideModel>()
-        banners.forEach {
-            val imageUrl = it.image
-            if (imageUrl.isNotEmpty()) {
-                imageList.add(SlideModel(imageUrl))
-            } else {
-                imageList.add(
-                    SlideModel(
-                        R.drawable.ic_launcher_background
-                    )
-                )
+        val imageList = mutableListOf<String>() // List to hold image URLs
+
+        // Clear imageList if it has previous data
+        imageList.clear()
+
+        // Iterate over the banners and add the image URLs to imageList
+        banners.forEach { banner ->
+            imageList.add(banner.image) // Add the image URL from each banner
+        }
+
+        // Set the adapter with the image URLs
+        bannerAdapter = BannerAdapter(imageList)
+        binding?.viewPagerBanner?.adapter = bannerAdapter
+
+        // Auto-scroll setup
+        autoScrollViewPager(imageList)
+    }
+    private fun autoScrollViewPager(imageListnew: MutableList<String>) {
+        val handler = Handler(Looper.getMainLooper())
+        val runnable = object : Runnable {
+            override fun run() {
+                val currentItem = binding!!.viewPagerBanner.currentItem
+                val nextItem = if (currentItem == imageListnew.size - 1) 0 else currentItem + 1
+                binding!!.viewPagerBanner.setCurrentItem(nextItem, true)
+                handler.postDelayed(this, 3000) // 3-second delay
             }
         }
-        binding.imageSlider.setImageList(imageList)
+        handler.postDelayed(runnable, 3000) // Initial delay before starting the auto-scroll
     }
 
-    private fun categoriesApi() {
+    private fun classApi() {
             ViewController.showLoading(requireActivity())
             val apiInterface = RetrofitClient.apiInterface
-            apiInterface.categoriesApi()
+            apiInterface.classApi()
                 .enqueue(object : retrofit2.Callback<List<CategoriesModel>> {
                     override fun onResponse(
                         call: retrofit2.Call<List<CategoriesModel>>,
@@ -129,24 +164,16 @@ class HomeFragment : Fragment() {
                 })
     }
     private fun DataSet(categories: List<CategoriesModel>) {
-        // Get the first 5 items from the categories list
-        val limitedCategories = if (categories.size > 11) categories.subList(0, 11) else categories
-
-        val layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+        val layoutManager = GridLayoutManager(activity, 2)
         binding.recyclerview.layoutManager = layoutManager
 
-
-        val adapter = HomeCategoriesAdapter(limitedCategories, { item ->
-            // Handle normal item click
-//            startActivity(Intent(activity, CategoriesBasedItemsListActivity::class.java).apply {
-//                putExtra("category_id", item.category_id)
-//                putExtra("category_Name", item.category)
-//            })
-        }, {
-            // Handle "more" click
-            (activity as? DashBoardActivity)?.replaceFragment(ClassesFragment())
-        })
-
+        val adapter = HomeCategoriesAdapter(categories) { item ->
+            //Toast.makeText(activity, "Clicked: ${item.text}", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(activity, ClassDetailsActivity::class.java).apply {
+                putExtra("id",item.id)
+                putExtra("Name",item.class_name)
+            })
+        }
         binding.recyclerview.adapter = adapter
     }
 

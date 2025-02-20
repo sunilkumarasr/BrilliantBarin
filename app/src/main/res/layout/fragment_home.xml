@@ -3,78 +3,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:orientation="vertical">
 
-        <androidx.core.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:fontFamily="@font/leaguespartan_medium"
+                android:textSize="19sp"
+                android:text="Hey Sunil Kumar"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/txtdes"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/leaguespartan_regular"
+                android:textSize="16sp"
+                android:text="Find a course you want to learn"/>
+
+            <LinearLayout
+                android:id="@+id/linearSearch"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15sp"
+                android:background="@drawable/round_edit_gray">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/search_ic"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:hint="Search Here"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
                     android:layout_marginEnd="25dp"
-                    android:layout_marginTop="15dp"
-                    android:orientation="vertical">
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/txtName"
+                    android:paddingTop="5dp"
+                    app:cardCornerRadius="10dp">
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/viewPagerBanner"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/leaguespartan_medium"
-                        android:textSize="19sp"
-                        android:text="Hey Sunil Kumar"/>
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/txtdes"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/leaguespartan_regular"
-                        android:textSize="16sp"
-                        android:text="Find a course you want to learn"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginTop="15sp"
-                        android:background="@drawable/round_edit_gray">
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="10dp"
-                            android:src="@drawable/search_ic"/>
-                        <androidx.appcompat.widget.AppCompatEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@null"
-                            android:hint="Search Here"
-                            android:layout_marginStart="10dp"
-                            android:textSize="15sp"/>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:src="@drawable/banner"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginEnd="25dp"
-                    android:scaleType="fitXY"/>
+                        android:layout_height="180dp" />
+                </androidx.cardview.widget.CardView>
 
                 <com.denzcoskun.imageslider.ImageSlider
                     android:visibility="gone"
@@ -93,25 +99,44 @@
                     app:iss_text_color="@color/black"
                     app:iss_title_background="@color/trance"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/leaguespartan_bold"
-                    android:text="All Classes"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginTop="15dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/leaguespartan_semibold"
+                        android:text="All Classes"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+                    <TextView
+                        android:id="@+id/txtSeeAll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:fontFamily="@font/leaguespartan_medium"
+                        android:text="See All"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerview"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:layout_marginStart="25dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
                     android:background="@color/white"/>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
                     android:id="@+id/recyclerviewjobAlert"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -119,8 +144,8 @@
                     android:layout_marginBottom="10dp" />
 
             </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+        </ScrollView>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </layout>

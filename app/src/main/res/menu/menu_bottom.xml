@@ -19,7 +19,7 @@
     <item
         android:id="@+id/subjects"
         android:icon="@drawable/sub_ic"
-        android:title="Subjects"
+        android:title="My Courses"
         app:itemIconTint="@drawable/bottom_nav_item_color_selector"
         app:itemTextColor="@drawable/bottom_nav_item_color_selector" />
 

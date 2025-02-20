@@ -42,8 +42,8 @@ class ClassPaymentActivity : AppCompatActivity() {
 
         binding.cardPayNow.setOnClickListener {
             startActivity(Intent(this@ClassPaymentActivity, ClassPaymentMethodActivity::class.java).apply {
-                putExtra("category_id","")
-                putExtra("category_Name","")
+                putExtra("id","")
+                putExtra("Name","")
             })
         }
 

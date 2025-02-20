@@ -15,17 +15,16 @@
         <include layout="@layout/top_layout" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:visibility="gone"
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <include layout="@layout/myorders_items_list" />
-        <include layout="@layout/myorders_items_list" />
-        <include layout="@layout/myorders_items_list" />
-        <include layout="@layout/myorders_items_list" />
-        <include layout="@layout/myorders_items_list" />
-        <include layout="@layout/myorders_items_list" />
+<!--        <include layout="@layout/myorders_items_list" />-->
+<!--        <include layout="@layout/myorders_items_list" />-->
+<!--        <include layout="@layout/myorders_items_list" />-->
+<!--        <include layout="@layout/myorders_items_list" />-->
+<!--        <include layout="@layout/myorders_items_list" />-->
+<!--        <include layout="@layout/myorders_items_list" />-->
 
     </LinearLayout>
 

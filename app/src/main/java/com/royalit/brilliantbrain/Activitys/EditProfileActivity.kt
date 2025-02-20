@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.royalit.brilliantbrain.AdaptersAndModels.ProfileResponse
 import com.royalit.brilliantbrain.AdaptersAndModels.UpdateProfileResponse
 import com.royalit.brilliantbrain.Config.Preferences
@@ -111,7 +112,6 @@ class EditProfileActivity : AppCompatActivity() {
             getProfileApi()
         }
 
-
         binding.cardChoose.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
                 requestPermissions.launch(arrayOf(READ_MEDIA_IMAGES, READ_MEDIA_VIDEO))
@@ -128,8 +128,6 @@ class EditProfileActivity : AppCompatActivity() {
 
     }
 
-
-
     private fun getProfileApi() {
         val userId = Preferences.loadStringValue(this@EditProfileActivity, Preferences.userId, "")
         Log.e("userId_",userId.toString())
@@ -145,9 +143,9 @@ class EditProfileActivity : AppCompatActivity() {
                         binding.nameEdit.setText(rsp.data?.name.toString())
                         binding.emailEdit.setText(rsp.data?.email.toString())
                         binding.phoneEdit.setText(rsp.data?.phone.toString())
-//                        if (!rsp.data?.image.equals("")){
-//                            Glide.with(binding.profileImage).load(rsp.data?.image).into(binding.profileImage)
-//                        }
+                        if (!rsp.data?.image.equals("")){
+                            Glide.with(binding.profileImage).load(rsp.data?.image).into(binding.profileImage)
+                        }
                     }
                 }
             }

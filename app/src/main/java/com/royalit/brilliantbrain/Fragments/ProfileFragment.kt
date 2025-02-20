@@ -79,9 +79,9 @@ class ProfileFragment : Fragment(), View.OnClickListener  {
                         binding.txtName.text = rsp.data?.name.toString()
                         binding.txtEmail.text = rsp.data?.email.toString()
                         binding.txtMobile.text = rsp.data?.phone.toString()
-//                        if (!rsp.data?.image.equals("")){
-//                            Glide.with(binding.profileImage).load(rsp.data?.image).into(binding.profileImage)
-//                        }
+                        if (!rsp.data?.image.equals("")){
+                            Glide.with(binding.profileImage).load(rsp.data?.image).into(binding.profileImage)
+                        }
                     }
                 }
             }

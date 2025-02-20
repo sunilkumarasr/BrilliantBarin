@@ -17,7 +17,6 @@ import com.royalit.brilliantbrain.databinding.FragmentCategoriesBinding
 
 class ClassesFragment : Fragment(){
 
-
     private lateinit var binding: FragmentCategoriesBinding
 
     override fun onCreateView(
@@ -38,15 +37,19 @@ class ClassesFragment : Fragment(){
     }
 
     private fun init() {
-        categoriesApi()
+
+        if(!ViewController.noInterNetConnectivity(requireActivity())){
+            ViewController.showToast(requireActivity(), "Please check your connection ")
+        }else{
+            classApi()
+        }
+
     }
 
-
-
-    private fun categoriesApi() {
+    private fun classApi() {
         ViewController.showLoading(requireActivity())
         val apiInterface = RetrofitClient.apiInterface
-        apiInterface.categoriesApi().enqueue(object : retrofit2.Callback<List<CategoriesModel>> {
+        apiInterface.classApi().enqueue(object : retrofit2.Callback<List<CategoriesModel>> {
             override fun onResponse(
                 call: retrofit2.Call<List<CategoriesModel>>,
                 response: retrofit2.Response<List<CategoriesModel>>
@@ -75,14 +78,13 @@ class ClassesFragment : Fragment(){
         })
 
     }
-
     private fun DataSet(categories: List<CategoriesModel>) {
         binding.recyclerview.layoutManager = LinearLayoutManager(activity)
         binding.recyclerview.adapter = ClassesHomeAdapter(categories) { item ->
             //Toast.makeText(activity, "Clicked: ${item.text}", Toast.LENGTH_SHORT).show()
             startActivity(Intent(activity, ClassDetailsActivity::class.java).apply {
-                putExtra("category_id",item.category_id)
-                putExtra("category_Name",item.category)
+                putExtra("id",item.id)
+                putExtra("Name",item.class_name)
             })
         }
     }

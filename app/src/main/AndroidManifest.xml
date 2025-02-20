@@ -8,13 +8,10 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
-
 
     <application
         android:name=".Config.MyApplication"
@@ -29,7 +26,19 @@
         android:theme="@style/Theme.Disability"
         tools:targetApi="31">
         <activity
-            android:name=".Activitys.SubjectDetaisActivity"
+            android:name=".Activitys.MySubjectsVideosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.MyOrdersDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.SubjectBasedVideosListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.SeeAllClassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.SearchActivity"
             android:exported="false" />
         <activity
             android:name=".Activitys.ClassConformationActivity"

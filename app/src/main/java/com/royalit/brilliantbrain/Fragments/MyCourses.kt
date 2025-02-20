@@ -8,21 +8,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.royalit.brilliantbrain.Activitys.SubjectDetaisActivity
+import com.royalit.brilliantbrain.Activitys.ClassDetailsActivity
+import com.royalit.brilliantbrain.Activitys.MyOrdersDetailsActivity
+import com.royalit.brilliantbrain.AdaptersAndModels.Categorys.CategoriesModel
+import com.royalit.brilliantbrain.AdaptersAndModels.Categorys.ClassesHomeAdapter
 import com.royalit.brilliantbrain.AdaptersAndModels.SalesHome.ProductData
-import com.royalit.brilliantbrain.AdaptersAndModels.SalesHome.SubjectAdapter
+import com.royalit.brilliantbrain.AdaptersAndModels.SalesHome.MyClassAdapter
 import com.royalit.brilliantbrain.AdaptersAndModels.SalesHome.SaleModel
 import com.royalit.brilliantbrain.Config.Preferences
 import com.royalit.brilliantbrain.Config.ViewController
 import com.royalit.brilliantbrain.Retrofit.RetrofitClient
 import com.royalit.brilliantbrain.databinding.FragmentSaleBinding
 
-
-class SubjectsFragment : Fragment(){
+class MyCourses : Fragment(){
 
     private lateinit var binding: FragmentSaleBinding
-
-    private var saleList = ArrayList<ProductData>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,50 +40,50 @@ class SubjectsFragment : Fragment(){
     }
 
     private fun init() {
-        saleApi()
+        myClassApi()
     }
 
 
-    private fun saleApi() {
-        val locationi = Preferences.loadStringValue(requireActivity(), Preferences.location, "")
-
+    private fun myClassApi() {
         ViewController.showLoading(requireActivity())
         val apiInterface = RetrofitClient.apiInterface
-        apiInterface.saleApi(locationi).enqueue(object : retrofit2.Callback<SaleModel>{
+        apiInterface.myClassApi().enqueue(object : retrofit2.Callback<List<CategoriesModel>> {
             override fun onResponse(
-                call: retrofit2.Call<SaleModel>,
-                response: retrofit2.Response<SaleModel>
+                call: retrofit2.Call<List<CategoriesModel>>,
+                response: retrofit2.Response<List<CategoriesModel>>
             ) {
                 ViewController.hideLoading()
                 if (response.isSuccessful) {
                     val rsp = response.body()
                     if (rsp != null) {
-                        saleList.clear()
-                        saleList.addAll(rsp.data)
-                        DataSet(saleList) // Pass the list of ProductData
+                        val categories = response.body()
+                        if (categories != null) {
+                            DataSet(categories)
+                        }
                     } else {
-                        binding.txtNoData.visibility = View.VISIBLE
+
                     }
                 } else {
-                    binding.txtNoData.visibility = View.VISIBLE
+                    ViewController.showToast(requireActivity(), "Error: ${response.code()}")
                 }
             }
 
-            override fun onFailure(call: retrofit2.Call<SaleModel>, t: Throwable) {
+            override fun onFailure(call: retrofit2.Call<List<CategoriesModel>>, t: Throwable) {
                 Log.e("cat_error", t.message.toString())
                 ViewController.hideLoading()
-                binding.txtNoData.visibility = View.VISIBLE
                 ViewController.showToast(requireActivity(), "Try again: ${t.message}")
             }
         })
 
     }
-    private fun DataSet(sale: List<ProductData>) {
+    private fun DataSet(categories: List<CategoriesModel>) {
         binding.recyclerview.layoutManager = LinearLayoutManager(activity)
-        binding.recyclerview.adapter = SubjectAdapter(sale) { item ->
-            startActivity(Intent(activity, SubjectDetaisActivity::class.java).apply {
-                putExtra("product_id","")
-                putExtra("product_Name","")
+        binding.recyclerview.adapter = MyClassAdapter(categories) { item ->
+            //Toast.makeText(activity, "Clicked: ${item.text}", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(activity, MyOrdersDetailsActivity::class.java).apply {
+                putExtra("id",item.id)
+                putExtra("Name",item.class_name)
+                putExtra("classBanner",item.image)
             })
         }
     }
