@@ -80,7 +80,7 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener, NavigationV
         profilepic = headerView.findViewById(R.id.profileImage)
         imgEdit = headerView.findViewById(R.id.imgEdit)
         imgEdit.setOnClickListener {
-           // startActivity(Intent(this@DashBoardActivity, EditProfileActivity::class.java))
+            startActivity(Intent(this@DashBoardActivity, EditProfileActivity::class.java))
         }
 
         binding.imgMenu.setOnClickListener {

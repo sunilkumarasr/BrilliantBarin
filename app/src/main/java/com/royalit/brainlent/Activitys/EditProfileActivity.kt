@@ -33,7 +33,6 @@ import java.io.File
 
 class EditProfileActivity : AppCompatActivity() {
 
-
     val binding: ActivityEditProfileBinding by lazy {
         ActivityEditProfileBinding.inflate(layoutInflater)
     }
@@ -86,7 +85,6 @@ class EditProfileActivity : AppCompatActivity() {
     private val IMAGE_PICK_CODE = 1000
     private var selectedImageUri: Uri? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -94,13 +92,11 @@ class EditProfileActivity : AppCompatActivity() {
 
         inits()
 
-
     }
 
     private fun inits() {
         binding.root.findViewById<TextView>(R.id.txtTitle).text = "Edit Profile"
         binding.root.findViewById<ImageView>(R.id.imgBack).setOnClickListener { finish() }
-
 
         if(!ViewController.noInterNetConnectivity(applicationContext)){
             ViewController.showToast(applicationContext, "Please check your connection ")
@@ -154,6 +150,7 @@ class EditProfileActivity : AppCompatActivity() {
 
 
     private fun updateProfileApi() {
+
         val userId = Preferences.loadStringValue(this@EditProfileActivity, Preferences.userId, "")
         val nameEdit=binding.nameEdit.text?.trim().toString()
         val emailEdit=binding.emailEdit.text?.trim().toString()
@@ -204,6 +201,7 @@ class EditProfileActivity : AppCompatActivity() {
                             startActivity(
                                 Intent(this@EditProfileActivity, DashBoardActivity::class.java)
                             )
+
                         }
                     } else {
                         ViewController.showToast(applicationContext, "Error: ${response.code()}")
@@ -217,9 +215,7 @@ class EditProfileActivity : AppCompatActivity() {
                 }
             })
 
-
     }
-
 
     private fun getRealPathFromURI(uri: Uri): String {
         val projection = arrayOf(MediaStore.Images.Media.DATA)
@@ -247,6 +243,5 @@ class EditProfileActivity : AppCompatActivity() {
         val requestFile = RequestBody.create(MultipartBody.FORM, ByteArray(0))
         return MultipartBody.Part.createFormData("image", "", requestFile)
     }
-
 
 }
