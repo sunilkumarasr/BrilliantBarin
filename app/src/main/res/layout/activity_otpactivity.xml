@@ -27,13 +27,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Verify Phone Number"
+                    android:text="Verify OTP"
                     android:fontFamily="@font/leaguespartan_semibold"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="25sp" />
 
                 <TextView
+                    android:id="@+id/txtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"

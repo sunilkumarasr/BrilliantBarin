@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.royalit.brilliantbrain"
+    namespace = "com.royalit.brainlent"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.royalit.brilliantbrain"
+        applicationId = "com.royalit.brainlent"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

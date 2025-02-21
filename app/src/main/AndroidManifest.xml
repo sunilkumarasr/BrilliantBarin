@@ -44,9 +44,6 @@
             android:name=".Activitys.ClassConformationActivity"
             android:exported="false" />
         <activity
-            android:name=".Activitys.ClassPaymentMethodActivity"
-            android:exported="false" />
-        <activity
             android:name=".Activitys.ClassPaymentActivity"
             android:exported="false" />
         <activity

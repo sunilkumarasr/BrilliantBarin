@@ -17,14 +17,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+            <VideoView
+                android:id="@+id/videoBanner"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"/>
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgBanner"
+                android:id="@+id/imgThumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="170dp"
-                android:src="@drawable/item_ic"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY"
+                android:src="@drawable/item_ic"/>
             <androidx.appcompat.widget.AppCompatImageView
-                android:visibility="gone"
+                android:id="@+id/imgPlay"
                 android:layout_centerInParent="true"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -45,11 +49,11 @@
                     android:layout_height="wrap_content"
                     android:text="Best Social Science for Class 1 NCERT Solutions Study Material."
                     android:textColor="@color/black"
-                    android:textSize="17sp"
+                    android:textSize="19sp"
                     android:fontFamily="@font/leaguespartan_semibold"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtDec"
+                    android:id="@+id/txtshortDec"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -57,7 +61,31 @@
                     android:textColor="@color/txtdes"
                     android:textSize="14sp"
                     android:fontFamily="@font/leaguespartan_regular"/>
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp">
+                    <TextView
+                        android:id="@+id/txtPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="000"
+                        android:fontFamily="@font/leaguespartan_medium"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_gravity="center_vertical"/>
+                    <TextView
+                        android:id="@+id/txtAcPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="15dp"
+                        android:text="000"
+                        android:fontFamily="@font/leaguespartan_medium"
+                        android:textSize="20sp"
+                        android:textColor="@color/gray"
+                        android:layout_gravity="center_vertical"/>
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -90,15 +118,7 @@
                     android:fontFamily="@font/leaguespartan_semibold"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:text="Details"
-                    android:textColor="@color/black"
-                    android:textSize="17sp"
-                    android:fontFamily="@font/leaguespartan_semibold"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtDec"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -108,95 +128,102 @@
                     android:fontFamily="@font/leaguespartan_regular"/>
 
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:text="What you will learn"
-                    android:textColor="@color/black"
-                    android:textSize="17sp"
-                    android:fontFamily="@font/leaguespartan_semibold"/>
-
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <RelativeLayout
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:layout_gravity="center_vertical"
-                        android:gravity="center_vertical"
-                        android:backgroundTint="@color/gray"
-                        android:background="@drawable/round_button_red"/>
-
+                    android:orientation="vertical">
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center_vertical"
-                        android:text="In this class you will learn every thing about Lerem"
-                        android:textColor="@color/txtdes"
-                        android:textSize="14sp"/>
-                </LinearLayout>
+                        android:layout_marginTop="7dp"
+                        android:text="What you will learn"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/leaguespartan_semibold"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <RelativeLayout
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:layout_gravity="center_vertical"
-                        android:gravity="center_vertical"
-                        android:backgroundTint="@color/gray"
-                        android:background="@drawable/round_button_red"/>
-
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="5dp"
                         android:layout_gravity="center_horizontal"
                         android:gravity="center_vertical"
-                        android:text="In this class you will learn every thing about Lerem"
-                        android:textColor="@color/txtdes"
-                        android:textSize="14sp"/>
-                </LinearLayout>
+                        android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                        <RelativeLayout
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:backgroundTint="@color/gray"
+                            android:background="@drawable/round_button_red"/>
 
-                    <RelativeLayout
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:layout_gravity="center_vertical"
-                        android:gravity="center_vertical"
-                        android:backgroundTint="@color/gray"
-                        android:background="@drawable/round_button_red"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_vertical"
+                            android:text="In this class you will learn every thing about Lerem"
+                            android:textColor="@color/txtdes"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="5dp"
                         android:layout_gravity="center_horizontal"
                         android:gravity="center_vertical"
-                        android:text="In this class you will learn every thing about Lerem"
-                        android:textColor="@color/txtdes"
-                        android:textSize="14sp"/>
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:backgroundTint="@color/gray"
+                            android:background="@drawable/round_button_red"/>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_vertical"
+                            android:text="In this class you will learn every thing about Lerem"
+                            android:textColor="@color/txtdes"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:backgroundTint="@color/gray"
+                            android:background="@drawable/round_button_red"/>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_vertical"
+                            android:text="In this class you will learn every thing about Lerem"
+                            android:textColor="@color/txtdes"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
                 </LinearLayout>
+
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardBuyNow"
