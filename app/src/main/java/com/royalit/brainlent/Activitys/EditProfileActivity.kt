@@ -4,12 +4,15 @@ import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.Manifest.permission.READ_MEDIA_IMAGES
 import android.Manifest.permission.READ_MEDIA_VIDEO
 import android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.database.Cursor
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.OpenableColumns
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
@@ -30,12 +33,14 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
+import java.io.FileOutputStream
 
 class EditProfileActivity : AppCompatActivity() {
 
     val binding: ActivityEditProfileBinding by lazy {
         ActivityEditProfileBinding.inflate(layoutInflater)
     }
+
 
     val requestPermissions = registerForActivityResult(RequestMultiplePermissions()) { results ->
         var permission = false;
@@ -81,6 +86,7 @@ class EditProfileActivity : AppCompatActivity() {
         }
     }
 
+
     //image selection
     private val IMAGE_PICK_CODE = 1000
     private var selectedImageUri: Uri? = null
@@ -104,6 +110,7 @@ class EditProfileActivity : AppCompatActivity() {
             getProfileApi()
         }
 
+
         binding.cardChoose.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
                 requestPermissions.launch(arrayOf(READ_MEDIA_IMAGES, READ_MEDIA_VIDEO))
@@ -113,6 +120,7 @@ class EditProfileActivity : AppCompatActivity() {
                 requestPermissions.launch(arrayOf(READ_EXTERNAL_STORAGE))
             }
         }
+
 
         binding.cardUpdate.setOnClickListener {
             updateProfileApi()
@@ -214,7 +222,6 @@ class EditProfileActivity : AppCompatActivity() {
                     Log.e("Tryagain:_ ", t.message.toString())
                 }
             })
-
     }
 
     private fun getRealPathFromURI(uri: Uri): String {
@@ -233,6 +240,11 @@ class EditProfileActivity : AppCompatActivity() {
         if (data != null) {
             selectedImageUri = data.data!!
         }
+
+        if (selectedImageUri != null) {
+            binding.profileImage.setImageURI(selectedImageUri) // Display selected image
+        }
+
         val file = File(getRealPathFromURI(selectedImageUri!!))
         binding.txtFileName.text = file.name
     }
@@ -243,5 +255,4 @@ class EditProfileActivity : AppCompatActivity() {
         val requestFile = RequestBody.create(MultipartBody.FORM, ByteArray(0))
         return MultipartBody.Part.createFormData("image", "", requestFile)
     }
-
 }

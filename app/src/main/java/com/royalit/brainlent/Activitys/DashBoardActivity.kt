@@ -195,6 +195,10 @@ class DashBoardActivity : AppCompatActivity(), View.OnClickListener, NavigationV
                 startActivity(Intent(this@DashBoardActivity, MyOrdersActivity::class.java))
             }
 
+            R.id.nav_myTrans ->{
+                startActivity(Intent(this@DashBoardActivity, MyTransectionsActivity::class.java))
+            }
+
             R.id.nav_aboutUs ->{
                 startActivity(Intent(this@DashBoardActivity, AboutUsActivity::class.java))
             }

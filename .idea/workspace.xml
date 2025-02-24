@@ -45,6 +45,16 @@
           <theme>@style/Theme.Disability</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_forgot.xml">
+        <config>
+          <theme>@style/Theme.Disability</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_help_and_support.xml">
+        <config>
+          <theme>@style/Theme.Disability</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_my_orders.xml">
         <config>
           <theme>@style/Theme.Disability</theme>
@@ -60,8 +70,19 @@
           <theme>@style/Theme.Disability</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_my_transections.xml">
+        <config>
+          <theme>@style/Theme.Disability</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_otpactivity.xml">
         <config>
+          <theme>@style/Theme.Disability</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_play.xml">
+        <config>
+          <state>Landscape</state>
           <theme>@style/Theme.Disability</theme>
         </config>
       </layout>
@@ -145,7 +166,17 @@
           <theme>@style/Theme.Disability</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/mytransections_items_list.xml">
+        <config>
+          <theme>@style/Theme.Disability</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header.xml">
+        <config>
+          <theme>@style/Theme.Disability</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/notifications_items_list.xml">
         <config>
           <theme>@style/Theme.Disability</theme>
         </config>
@@ -185,6 +216,11 @@
           <theme>@style/Theme.Disability</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/menu/side_menu.xml">
+        <config>
+          <theme>@style/Theme.Disability</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AutoImportSettings">
@@ -192,6 +228,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35ddaa69-c88a-4773-b75a-ad8f64d1ef9b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/MyTransectionsActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/PlayActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/AdaptersAndModels/MyTransectionAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/loading_ic.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_transections.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_play.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/mytransections_items_list.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
@@ -199,9 +242,36 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/AboutUsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/AboutUsActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/ClassDetailsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/ClassDetailsActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/DashBoardActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/DashBoardActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/EditProfileActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/EditProfileActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/MySubjectsVideosActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/MySubjectsVideosActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/NotificationActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/NotificationActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/PrivacyPolicyActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/PrivacyPolicyActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/SubjectBasedVideosListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/SubjectBasedVideosListActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/TermsAndConditionsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Activitys/TermsAndConditionsActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/AdaptersAndModels/MyClassModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/AdaptersAndModels/MyClassModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/AdaptersAndModels/MyClassSubjectBasrdVideosAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/AdaptersAndModels/MyClassSubjectBasrdVideosAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/AdaptersAndModels/MyClassVideoAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/AdaptersAndModels/MyClassVideoAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/AdaptersAndModels/Notifications/NotificationAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/AdaptersAndModels/Notifications/NotificationAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/AdaptersAndModels/Notifications/NotificationModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/AdaptersAndModels/Notifications/NotificationModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Fragments/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Fragments/ProfileFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Logins/CreatePasswordActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Logins/CreatePasswordActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Logins/ForgotActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Logins/ForgotActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Logins/OTPActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Logins/OTPActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Retrofit/ApiInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/royalit/brainlent/Retrofit/ApiInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_about_us.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_about_us.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_faq.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_faq.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgot.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgot.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_privacy_policy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_privacy_policy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_terms_and_conditions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_terms_and_conditions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/notifications_items_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/notifications_items_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/side_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/side_menu.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +281,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=4DYX49NVR4Q4D6LV)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/Users/sunil/.android/avd/Medium_Phone_API_35.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -228,22 +298,22 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Brilliant Brain" type="f1a62948:ProjectNode" />
+                <item name="Brain Lent" type="f1a62948:ProjectNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Brilliant Brain" type="f1a62948:ProjectNode" />
+                <item name="Brain Lent" type="f1a62948:ProjectNode" />
                 <item name="app" type="2d1252cf:ModuleNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Brilliant Brain" type="f1a62948:ProjectNode" />
+                <item name="Brain Lent" type="f1a62948:ProjectNode" />
                 <item name="app" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Brilliant Brain" type="f1a62948:ProjectNode" />
+                <item name="Brain Lent" type="f1a62948:ProjectNode" />
                 <item name="app" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="other" type="c8890929:TasksNode$1" />
@@ -260,9 +330,9 @@
       <list>
         <option value="Class" />
         <option value="resourceFile" />
-        <option value="layoutResourceFile" />
-        <option value="Kotlin Class" />
         <option value="Kotlin Data Class" />
+        <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -300,6 +370,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="android.template.-1301500017">
+      <recent name="com.royalit.brainlent.Activitys" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
@@ -312,6 +385,9 @@
     </key>
     <key name="android.template.-1847166621">
       <recent name="com.royalit.brilliantbrain.Activitys" />
+    </key>
+    <key name="android.template.188051109">
+      <recent name="com.royalit.brainlent.Activitys" />
     </key>
   </component>
   <component name="RunManager">

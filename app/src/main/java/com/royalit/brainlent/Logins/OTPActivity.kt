@@ -186,7 +186,10 @@ class OTPActivity : AppCompatActivity() {
 
                             startActivity(Intent(this@OTPActivity, DashBoardActivity::class.java))
                         }else{
-                            startActivity(Intent(this@OTPActivity, CreatePasswordActivity::class.java))
+                            startActivity(Intent(this@OTPActivity,CreatePasswordActivity::class.java).apply {
+                                putExtra("email",email)
+                            })
+                            finish()
                         }
 
                     }else{

@@ -22,6 +22,8 @@ data class DataClass(
     @SerializedName("updated_at") val updated_at: String,
     @SerializedName("updated_by") val updated_by: String,
     @SerializedName("status") val status: String,
+    @SerializedName("created_date") val created_date: String,
+    @SerializedName("created_time") val created_time: String,
     @SerializedName("class_details") val class_details: ClassDetailsUser? = null
 )
 

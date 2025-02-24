@@ -64,7 +64,7 @@ class NotificationActivity : AppCompatActivity() {
 
         ViewController.showLoading(this@NotificationActivity)
         val apiInterface = RetrofitClient.apiInterface
-        apiInterface.NotificationsListApi(userId).enqueue(object : retrofit2.Callback<List<NotificationModel>> {
+        apiInterface.NotificationsListApi().enqueue(object : retrofit2.Callback<List<NotificationModel>> {
             override fun onResponse(
                 call: retrofit2.Call<List<NotificationModel>>,
                 response: retrofit2.Response<List<NotificationModel>>
@@ -96,19 +96,19 @@ class NotificationActivity : AppCompatActivity() {
     private fun NotificationDataSet(joblist: List<NotificationModel>) {
         binding.recyclerview.layoutManager = LinearLayoutManager(this@NotificationActivity)
         binding.recyclerview.adapter = NotificationAdapter(joblist, onItemClick = {
-            if(it.type.equals("ServiceEnquiry"))
-            {
-                startActivity(Intent(this@NotificationActivity, EnquiryPostActivity::class.java).apply {
-                    putExtra("post_id",it.product_id)
-                    putExtra("post_Name",it.product_name)
-                })
-            }else if(it.type.equals("ProductEnquiry"))
-            {
-                startActivity(Intent(this@NotificationActivity, EnquiryProductActivity::class.java).apply {
-                    putExtra("post_id",it.product_id)
-                    putExtra("post_Name",it.product_name)
-                })
-            }
+//            if(it.type.equals("ServiceEnquiry"))
+//            {
+//                startActivity(Intent(this@NotificationActivity, EnquiryPostActivity::class.java).apply {
+//                    putExtra("post_id",it.product_id)
+//                    putExtra("post_Name",it.product_name)
+//                })
+//            }else if(it.type.equals("ProductEnquiry"))
+//            {
+//                startActivity(Intent(this@NotificationActivity, EnquiryProductActivity::class.java).apply {
+//                    putExtra("post_id",it.product_id)
+//                    putExtra("post_Name",it.product_name)
+//                })
+//            }
         })
     }
 

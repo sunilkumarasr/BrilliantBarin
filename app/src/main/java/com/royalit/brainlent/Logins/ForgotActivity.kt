@@ -67,7 +67,7 @@ class ForgotActivity : AppCompatActivity() {
                         val loginResponse = response.body()
                         if (loginResponse != null && loginResponse.status.equals("success")) {
                             startActivity(Intent(this@ForgotActivity,OTPActivity::class.java).apply {
-                                putExtra("email",binding.emailEdit.editableText.trim().toString())
+                                putExtra("email",email)
                                 putExtra("type","Forgot")
                             })
                             finish()

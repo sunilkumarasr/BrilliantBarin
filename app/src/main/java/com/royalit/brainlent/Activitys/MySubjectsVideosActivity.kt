@@ -72,7 +72,7 @@ class MySubjectsVideosActivity : AppCompatActivity() {
         ViewController.showLoading(this@MySubjectsVideosActivity)
 
         val apiInterface = RetrofitClient.apiInterface
-        val videosRequest = VideosRequest("2", "2")
+        val videosRequest = VideosRequest(classId, subId)
 
         apiInterface.getVideosByTopicApi(videosRequest)
             .enqueue(object : retrofit2.Callback<VideosResponse> {
@@ -107,7 +107,7 @@ class MySubjectsVideosActivity : AppCompatActivity() {
         binding.recyclerview.layoutManager =
             LinearLayoutManager(this@MySubjectsVideosActivity)
 
-        val adapter = MyClassSubjectBasrdVideosAdapter(sublist) { item ->
+        val adapter = MyClassSubjectBasrdVideosAdapter(this@MySubjectsVideosActivity, sublist) { item ->
             // Here you can handle item clicks
 
         }

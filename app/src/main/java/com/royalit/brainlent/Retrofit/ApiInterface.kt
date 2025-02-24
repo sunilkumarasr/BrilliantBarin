@@ -128,6 +128,9 @@ interface ApiInterface {
     @POST("mycourses")
     fun myClassApi(@Body myclassResponse: MyClassRequest): Call<MyClassModel>
 
+    @POST("mycourses")
+    fun myTransectionsApi(@Body myclassResponse: MyClassRequest): Call<MyClassModel>
+
     @POST("subject")
     fun myOrdersDetailsApi(@Body subjectResponse: SubjectRequest): Call<SubjectResponse>
 
@@ -164,8 +167,8 @@ interface ApiInterface {
     @GET("home_banner_list")
     fun HomebannersApi(): Call<List<HomeBannersModel>>
 
-    @GET("firebase_notification")
-    fun NotificationsListApi(@Query("created_by") state: String?): Call<List<NotificationModel>>
+    @GET("notification")
+    fun NotificationsListApi(): Call<List<NotificationModel>>
 
 
     //products category's

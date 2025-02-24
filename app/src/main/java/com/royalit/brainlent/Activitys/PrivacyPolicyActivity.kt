@@ -54,7 +54,10 @@ class PrivacyPolicyActivity : AppCompatActivity() {
                     val loginResponse = response.body()
                     if (loginResponse != null) {
                         if (!loginResponse.image.equals("")){
-                            Glide.with(binding.imgBanner).load(loginResponse.image).into(binding.imgBanner)
+                            Glide.with(binding.imgBanner)
+                                .load(loginResponse.image)
+                                .placeholder(R.drawable.loading_ic)
+                                .into(binding.imgBanner)
                         }
                         binding.txtNote.text = Html.fromHtml(loginResponse.description, Html.FROM_HTML_MODE_LEGACY)
                     }

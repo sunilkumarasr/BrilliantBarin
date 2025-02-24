@@ -54,7 +54,10 @@ class AboutUsActivity : AppCompatActivity() {
                     val rsp = response.body()
                     if (rsp != null) {
                         if (!rsp.image.equals("")){
-                            Glide.with(binding.imgBanner).load(rsp.image).into(binding.imgBanner)
+                            Glide.with(binding.imgBanner)
+                                .load(rsp.image)
+                                .placeholder(R.drawable.loading_ic)
+                                .into(binding.imgBanner)
                         }
                         binding.txtNote.text = Html.fromHtml(rsp.description, Html.FROM_HTML_MODE_LEGACY)
                     }

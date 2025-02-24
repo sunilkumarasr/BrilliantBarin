@@ -70,7 +70,7 @@ class SubjectBasedVideosListActivity : AppCompatActivity() {
         ViewController.showLoading(this@SubjectBasedVideosListActivity)
 
         val apiInterface = RetrofitClient.apiInterface
-        val videosRequest = VideosRequest("2", "2")
+        val videosRequest = VideosRequest(classId, subId)
 
         apiInterface.getVideosByTopicApi(videosRequest)
             .enqueue(object : retrofit2.Callback<VideosResponse> {

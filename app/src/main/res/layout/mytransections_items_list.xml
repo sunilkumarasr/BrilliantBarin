@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    app:cardCornerRadius="15dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtOrderId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="orderID"
+                android:fontFamily="@font/teachers_medium"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtTrId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="TransectionId"
+                android:fontFamily="@font/teachers_medium"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="date"
+                android:fontFamily="@font/teachers_medium"
+                android:textSize="15sp"
+                android:textColor="@color/gray"/>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="₹210.00"
+                android:fontFamily="@font/leaguespartan_medium"
+                android:textSize="17sp"
+                android:textColor="@color/colorPrimary"/>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/star"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="4.8 (6.5k ratings) | 2.7k students"
+                    android:fontFamily="@font/leaguespartan_medium"
+                    android:textSize="14sp"
+                    android:textColor="@color/txtdes"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

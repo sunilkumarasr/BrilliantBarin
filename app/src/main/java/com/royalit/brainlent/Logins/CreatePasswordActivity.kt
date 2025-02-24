@@ -67,6 +67,7 @@ class CreatePasswordActivity : AppCompatActivity() {
             return
         }
 
+
         val resetPasswordRequest = ResetPasswordRequest(
             email = email,
             new_password = password_,
@@ -86,12 +87,12 @@ class CreatePasswordActivity : AppCompatActivity() {
                     startActivity(Intent(this@CreatePasswordActivity, LoginActivity::class.java))
                     finish()
                 }else{
-                    ViewController.showToast(applicationContext, "Login Failed")
+                    strRes.message?.let { ViewController.showToast(applicationContext, it) }
                 }
             }
             override fun onFailure(call: Call<ResetPasswordResponse>, t: Throwable) {
                 ViewController.hideLoading()
-                ViewController.showToast(applicationContext, "Login Failed")
+                ViewController.showToast(applicationContext, "Failed")
             }
         }
         )

@@ -80,7 +80,6 @@ class ClassDetailsActivity : AppCompatActivity() {
 
     }
 
-
     private fun classApi() {
         ViewController.showLoading(this@ClassDetailsActivity)
         val apiInterface = RetrofitClient.apiInterface
@@ -206,7 +205,6 @@ class ClassDetailsActivity : AppCompatActivity() {
         }
         binding.recyclerview.adapter = adapter
     }
-
 
     //buynow
     private fun buynowApi() {

@@ -6,11 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.royalit.brainlent.Activitys.MySubjectsVideosActivity
 import com.royalit.brainlent.R
 
 class MyClassSubjectBasrdVideosAdapter(
+    public val contact: MySubjectsVideosActivity,
     private val items: List<VideosDataResponse>,
-    private val onItemClick: (VideosDataResponse) -> Unit // Click listener function
+    private val onItemClick: (VideosDataResponse) -> Unit // Click listener function){}
 ) : RecyclerView.Adapter<MyClassSubjectBasrdVideosAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,7 +41,7 @@ class MyClassSubjectBasrdVideosAdapter(
         holder.txtTitle.text = item.title
 
         // Set up the nested RecyclerView for additional videos
-        val myClassVideoAdapter = MyClassVideoAdapter(item.additional_videos)
+        val myClassVideoAdapter = MyClassVideoAdapter(contact,item.additional_videos)
         holder.recyclerview.layoutManager = LinearLayoutManager(holder.itemView.context, LinearLayoutManager.VERTICAL, false)
         holder.recyclerview.adapter = myClassVideoAdapter
 

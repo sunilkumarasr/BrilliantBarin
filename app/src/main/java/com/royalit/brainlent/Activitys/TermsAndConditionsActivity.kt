@@ -54,7 +54,10 @@ class TermsAndConditionsActivity : AppCompatActivity() {
                     val response = response.body()
                     if (response != null) {
                         if (!response.image.equals("")){
-                            Glide.with(binding.imgBanner).load(response.image).into(binding.imgBanner)
+                            Glide.with(binding.imgBanner)
+                                .load(response.image)
+                                .placeholder(R.drawable.loading_ic)
+                                .into(binding.imgBanner)
                         }
                         binding.txtNote.text = Html.fromHtml(response.description, Html.FROM_HTML_MODE_LEGACY)
                     }

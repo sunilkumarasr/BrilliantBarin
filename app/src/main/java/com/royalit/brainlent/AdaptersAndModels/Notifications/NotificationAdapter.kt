@@ -14,8 +14,9 @@ class NotificationAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val txtTitle: TextView = itemView.findViewById(R.id.txtTitle)
-        val txtBody: TextView = itemView.findViewById(R.id.txtBody)
         val txtDate: TextView = itemView.findViewById(R.id.txtDate)
+        val txtDec: TextView = itemView.findViewById(R.id.txtDec)
+
 
         init {
             itemView.setOnClickListener {
@@ -36,8 +37,8 @@ class NotificationAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.txtTitle.text = item.title
-        holder.txtBody.text = item.body
         holder.txtDate.text = item.created_date
+        holder.txtDec.text = item.description
     }
 
     override fun getItemCount(): Int {

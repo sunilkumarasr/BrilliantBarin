@@ -16,6 +16,7 @@ import com.royalit.brainlent.Activitys.EditProfileActivity
 import com.royalit.brainlent.Activitys.FaqActivity
 import com.royalit.brainlent.Activitys.HelpAndSupportActivity
 import com.royalit.brainlent.Activitys.MyOrdersActivity
+import com.royalit.brainlent.Activitys.MyTransectionsActivity
 import com.royalit.brainlent.Activitys.PrivacyPolicyActivity
 import com.royalit.brainlent.Activitys.TermsAndConditionsActivity
 import com.royalit.brainlent.AdaptersAndModels.ProfileResponse
@@ -29,7 +30,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ProfileFragment : Fragment(), View.OnClickListener  {
+class ProfileFragment : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentProfileBinding
 
@@ -55,6 +56,7 @@ class ProfileFragment : Fragment(), View.OnClickListener  {
 
         binding.imgEdit.setOnClickListener(this)
         binding.linearMyOrders.setOnClickListener(this)
+        binding.linearMyTrans.setOnClickListener(this)
         binding.linearAbout.setOnClickListener(this)
         binding.linearContactUs.setOnClickListener(this)
         binding.linearTermsandConditions.setOnClickListener(this)
@@ -66,12 +68,15 @@ class ProfileFragment : Fragment(), View.OnClickListener  {
 
     private fun getProfileApi() {
         val userId = Preferences.loadStringValue(requireActivity(), Preferences.userId, "")
-        Log.e("userId_",userId.toString())
+        Log.e("userId_", userId.toString())
 
         ViewController.showLoading(requireActivity())
         val apiInterface = RetrofitClient.apiInterface
         apiInterface.getProfileApi(userId).enqueue(object : Callback<ProfileResponse> {
-            override fun onResponse(call: Call<ProfileResponse>, response: Response<ProfileResponse>) {
+            override fun onResponse(
+                call: Call<ProfileResponse>,
+                response: Response<ProfileResponse>
+            ) {
                 ViewController.hideLoading()
                 if (response.isSuccessful) {
                     val rsp = response.body()
@@ -79,12 +84,14 @@ class ProfileFragment : Fragment(), View.OnClickListener  {
                         binding.txtName.text = rsp.data?.name.toString()
                         binding.txtEmail.text = rsp.data?.email.toString()
                         binding.txtMobile.text = rsp.data?.phone.toString()
-                        if (!rsp.data?.image.equals("")){
-                            Glide.with(binding.profileImage).load(rsp.data?.image).into(binding.profileImage)
+                        if (!rsp.data?.image.equals("")) {
+                            Glide.with(binding.profileImage).load(rsp.data?.image)
+                                .into(binding.profileImage)
                         }
                     }
                 }
             }
+
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
                 ViewController.hideLoading()
                 ViewController.showToast(requireActivity(), "Try again: ${t.message}")
@@ -99,27 +106,39 @@ class ProfileFragment : Fragment(), View.OnClickListener  {
             R.id.imgEdit -> {
                 startActivity(Intent(activity, EditProfileActivity::class.java))
             }
+
             R.id.linearMyOrders -> {
                 startActivity(Intent(activity, MyOrdersActivity::class.java))
             }
+
+            R.id.linearMyTrans -> {
+                startActivity(Intent(activity, MyTransectionsActivity::class.java))
+            }
+
             R.id.linearAbout -> {
                 startActivity(Intent(activity, AboutUsActivity::class.java))
             }
+
             R.id.linearContactUs -> {
                 startActivity(Intent(activity, ContactUsActivity::class.java))
             }
+
             R.id.linearTermsandConditions -> {
                 startActivity(Intent(activity, TermsAndConditionsActivity::class.java))
             }
+
             R.id.linearPrivacyPolicy -> {
                 startActivity(Intent(activity, PrivacyPolicyActivity::class.java))
             }
+
             R.id.linearFAQ -> {
                 startActivity(Intent(activity, FaqActivity::class.java))
             }
+
             R.id.linearHelpAndSupport -> {
                 startActivity(Intent(activity, HelpAndSupportActivity::class.java))
             }
+
             R.id.linearLogout -> {
                 logOut()
             }
