@@ -100,24 +100,15 @@ class ClassDetailsActivity : AppCompatActivity() {
 
                                     //video
                                     Glide.with(binding.imgThumbnail)
-                                        .load(RetrofitClient.Image_Path + it.image)
+                                        .load(RetrofitClient.Image_Path + classBanner)
                                         .error(R.drawable.item_ic)
                                         .into(binding.imgThumbnail)
-                                    val videoUri: Uri = Uri.parse(RetrofitClient.Image_Path + it.image)
-                                    binding.videoBanner.setVideoURI(videoUri)
-                                    binding.imgPlay.setOnClickListener {
-                                        // Hide the play button once the video starts playing
-                                        binding.imgThumbnail.visibility = View.INVISIBLE
-                                        binding.imgPlay.visibility = View.INVISIBLE
-                                        // Start the video playback
-                                        binding.videoBanner.start()
-                                    }
-                                    // Optional: Hide the play button when the video ends
-                                    binding.videoBanner.setOnCompletionListener {
-                                        binding.imgThumbnail.visibility = View.INVISIBLE
-                                        binding.imgPlay.visibility = View.VISIBLE
-                                    }
 
+                                    binding.imgPlay.setOnClickListener {
+                                        startActivity(Intent(this@ClassDetailsActivity, PlayActivity::class.java).apply {
+                                            putExtra("url",classBanner)
+                                        })
+                                    }
 
                                     binding.txtName.setText(it.class_name)
                                     binding.txtshortDec.text = Html.fromHtml(it.short_description, Html.FROM_HTML_MODE_LEGACY)

@@ -28,14 +28,14 @@
         <activity
             android:name=".Activitys.PlayActivity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Activitys.MyTransectionsActivity"
             android:exported="false" />
         <activity
             android:name=".Activitys.MySubjectsVideosActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.MyOrdersDetailsActivity"
             android:exported="false" />

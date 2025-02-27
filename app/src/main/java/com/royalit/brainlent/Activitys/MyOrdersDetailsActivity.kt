@@ -54,19 +54,11 @@ class MyOrdersDetailsActivity : AppCompatActivity() {
             .load(RetrofitClient.Image_Path + classBanner)
             .error(R.drawable.item_ic)
             .into(binding.imgThumbnail)
-        val videoUri: Uri = Uri.parse(RetrofitClient.Image_Path + classBanner)
-        binding.videoBanner.setVideoURI(videoUri)
+
         binding.imgPlay.setOnClickListener {
-            // Hide the play button once the video starts playing
-            binding.imgThumbnail.visibility = View.INVISIBLE
-            binding.imgPlay.visibility = View.INVISIBLE
-            // Start the video playback
-            binding.videoBanner.start()
-        }
-        // Optional: Hide the play button when the video ends
-        binding.videoBanner.setOnCompletionListener {
-            binding.imgThumbnail.visibility = View.INVISIBLE
-            binding.imgPlay.visibility = View.VISIBLE
+            startActivity(Intent(this@MyOrdersDetailsActivity, PlayActivity::class.java).apply {
+                putExtra("url",classBanner)
+            })
         }
 
         if(!ViewController.noInterNetConnectivity(applicationContext)){

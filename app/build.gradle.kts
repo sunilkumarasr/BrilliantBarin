@@ -68,7 +68,6 @@ dependencies {
 
     implementation ("com.hbb20:ccp:2.5.0")
 
-
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.14.2")
 
@@ -77,5 +76,10 @@ dependencies {
     // Firebase Messaging
     implementation("com.google.firebase:firebase-messaging")
     implementation("com.google.firebase:firebase-analytics")
+
+    implementation("androidx.media3:media3-exoplayer:1.2.0")
+    implementation("androidx.media3:media3-ui:1.2.0")
+    implementation("androidx.media3:media3-exoplayer-dash:1.2.0")
+
 
 }
