@@ -18,6 +18,10 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+//    playStore details
+//    password: royalit@123
+//    alias:key0
+
     buildTypes {
         release {
             isMinifyEnabled = false
